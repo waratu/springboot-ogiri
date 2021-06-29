@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理者ログイン</title>
+</head>
+
+<body>
+<form th:method="post" th:action="@{/ogiri/top}" th:object="${post}" novalidate>
+  <h2>管理者ログイン</h2>
+  <div th:if="${param.error}">
+    <small>管理者名またはパスワードが正しくありません</small>
+  </div>
+  <form th:action="@{/login}" th:method="post" novalidate>
+    <div>
+      <label for="admin">管理者名：</label>
+      <input type="text" name="admin">
+    </div>
+    <div>
+      <label for="admin">パスワード：</label>
+      <input type="password" name="password">
+    </div>
+    <button>ログイン</button>
+  </form>
+  <a th:href="@{/ogiri}">投稿者の確認画面に戻る</a>
+</body>
+
+</html>

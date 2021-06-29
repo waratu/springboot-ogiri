@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+<body>
+<h1 >感想</h1>
+    <ul th:each="r : ${result}">
+    <li class="list-group-item list-group-item-info">
+       [[${r.key}]] -- [[${r.value}]]
+    </li>
+    </ul>
+
+    <h3>コメント</h3>
+    <ul th:each="eval : ${post.eval}">
+     <label th:text="${comment}">みんなからのコメント</label>
+       [[${eval.comment}]]
+    </ul>
+   <form th:method="post "  th:action="@{/ogiri}" th:object="${post}">
+    
+   <p>
+    <span th:text="${comment}">コメントの値</span>以上が皆様評価です。
+   </p>
+    
+    <a th:href="@{/ogiri}">Back</a>
+    <a th:href="@{/ogiri/{id}(id=*{id})}" ></a>
+
+</div>
+</body>
+</form>
+</html>
+    

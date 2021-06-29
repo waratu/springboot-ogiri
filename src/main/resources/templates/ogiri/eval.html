@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="main">
+
+    <body>
+        <div class="p-3 mb-2 bg-warning text-dark"></div>
+        <h1>評価</h1>
+
+        <div>
+        
+
+            <ul th:object="${post}">
+                <label>題名: [[*{title}]]</label>
+              </ul>
+            
+        </div>
+        <div>
+            <label for="file">画像: </label><br>
+            <ul th:object="${post}" enctype="multipart/form-data" th:action="@{/ogiri/result}">
+                
+            </ul>
+        </div>
+
+        <form th:method="post" th:action="@{/ogiri/{id}/eval(id=${post.id})}" th:object="${eval}" novalidate>
+                <div>
+                    <input type="radio" name="radio" th:value="おもしろい">おもしろい
+                <label for="point1"></label></div> 
+                <div><label></label>
+                    <input type="radio" name="radio"  th:value="普通">普通
+                </label></div>
+                <div><label>
+                    <input type="radio" name="radio"  th:value="つまらない">つまらない
+                </label></div>
+           
+
+
+            ご感想：<br>
+            <textarea name="comment" rsprinows="4" cols="40"></textarea><br>
+            <input type="submit" value="送信"><input type="reset" value="リセット">
+
+        </form>
+        </ul>
+</div>
+</body>
+
+</html>

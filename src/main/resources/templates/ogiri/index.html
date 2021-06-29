@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理する</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+    <h1>投稿者の確認</h1>
+    <div class="container">
+        <table class="table table-striped">
+            
+            <thead class="thead-dark">
+                <th>ID</th>
+                <th>ニックネーム</th>
+                <th>投稿日</th>
+                <th>アップロード画像</th>
+                <th>題名</th>
+                 
+            </thead>
+
+            <tbody> 
+                <tr th:each="post : ${post}" th:object="${post}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{nickname}"></td>
+                    <td th:text="*{date}"></td>
+                    <td>
+                        <img th:src="*{image}" alt="image">
+                    </td>
+                    <td>
+                    <a th:href="@{/ogiri/{id}/eval(id=*{id})}" th:text="*{title}"></a>
+                    </td>
+                    <td>
+                    <a th:href="@{/ogiri/{id}/result(id=*{id})}" class="btn btn-info">感想</a>
+                    </td>
+                 
+                </tr>     
+                    <a th:href="@{ogiri/new}">新規投稿する方はこちらから</a><br>
+                    <a th:href="@{ogiri/login}">管理者の方はこちらから</a>
+                    
+                
+            </tbody>
+        </table>
+        
+</body>
