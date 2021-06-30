@@ -40,7 +40,7 @@
                  
             </thead>
             <tbody>
-<tr th:each="post : ${post}" th:object="${post}">
+<tr th:each="post : ${post}" th:object="${post}" enctype="multipart/form-data" th:action="@{/ogiri/{id}/top(id=${post.id})}">
                     <td th:text="*{id}"></td>
                     <td th:text="*{nickname}"></td>
                     <td th:text="*{date}"></td>
@@ -54,7 +54,7 @@
                     <a th:href="@{/ogiri/{id}/result(id=*{id})}" class="btn btn-info">感想</a>
                     </td>
                     <td>
-                        <form th:action="@{/ogiri/delete/{id}(id=${post.id})}" th:method="delete">
+                        <form th:action="@{/ogiri/{id}/delete(id=*{id})}" th:method="delete">
                             <button type="submit" onclick="return confirm('本当に消しますか?');"
                                 class="btn btn-danger"><i class="fas fa-trash"></i>Destroy</button>
                         </form>

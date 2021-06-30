@@ -29,7 +29,7 @@ public class Post {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Integer id;
+    private long id;
 
     @NotBlank
     @Size(max = 20)
@@ -54,13 +54,13 @@ public class Post {
     private List<Eval> eval;
 
 
-     /**
+      /**
    * 画像データをHTMLのimageタグで表示可能な形式で取得する
    * 
    * @return BASE64形式文字列
    * @throws Exception
    */
-  public String file() throws Exception {
+  public String getImageSource() throws Exception {
     StringBuffer sb = new StringBuffer();
     if (image.length > 0) {
       sb.append("data:");
@@ -70,5 +70,4 @@ public class Post {
     }
     return sb.toString();
   }
-
 }

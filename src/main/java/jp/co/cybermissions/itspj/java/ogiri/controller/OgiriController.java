@@ -44,46 +44,45 @@ public class OgiriController {
     private final EvalRepository eRep;
 
     @GetMapping("/new")
-    public String register(@ModelAttribute Post post, Model model) {
-        model.addAttribute("post");
+    public String register(@ModelAttribute Post post) {
         return "ogiri/new";
     }
 
-    @PostMapping("")
-    public String save(@RequestParam("file") MultipartFile file, @Validated @ModelAttribute Post post,
-            BindingResult result, Model model) {
-
-        if (result.hasErrors()) {
-            return "ogiri/new";
-        }
-        if (file != null) {
-            try {
-                post.setImage(file.getBytes());
-                post.setType(file.getContentType());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        pRep.save(post);
-        return "redirect:/ogiri";
+    
+   @PostMapping("")
+  public String save(@RequestParam("file") MultipartFile file, @Validated @ModelAttribute Post post,
+      BindingResult result) {
+    if (result.hasErrors()) {
+      return "ogiri/new";
     }
+    if (file != null) {
+      try {
+        post.setImage(file.getBytes());
+        post.setType(file.getContentType());
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    pRep.save(post);
+    return "redirect:/ogiri";
+  }
     // pRep.save(post);
     // return "redirect:/ogiri";
 
     @GetMapping("")
     public String index(Model model) {
-        model.addAttribute("post", pRep.findAll());
+        model.addAttribute("posts", pRep.findAll());
         return "ogiri/index";
     }
 
     @GetMapping("/{id}/eval")
-    public String detail(@PathVariable Integer id, Model model) {
+    public String detail(@PathVariable Long id, Model model) {
         model.addAttribute("post", pRep.findById(id).get());
         return "ogiri/eval";
     }
 
     @PostMapping("/{id}/eval")
-    public String eval(@PathVariable Integer id, @RequestParam(name = "radio") String choiceText, @ModelAttribute Eval eval, Model model) {
+    public String eval(@PathVariable Long id, @RequestParam(name = "radio") String choiceText, @ModelAttribute Eval eval, Model model) {
         Post post = pRep.findById(id).get();
         eval.setChoiceText(choiceText);
         eval.setPoint(1);
@@ -94,7 +93,7 @@ public class OgiriController {
     }
 
     @GetMapping("/{id}/result")
-    public String results(@PathVariable Integer id, Model model) {
+    public String results(@PathVariable Long id, Model model) {
         model.addAttribute("post", pRep.findById(id).get());
         final String  goodText="おもしろい", normalText="普通", badText="つまらない";
         int good = 0, normal = 0, bad = 0;
@@ -119,10 +118,10 @@ public class OgiriController {
         return "ogiri/result";
     }
 
-    @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id) {
+    @DeleteMapping("/{id}/delete")
+    public String delete(@PathVariable Long id) {
         pRep.deleteById(id);
-        return "redirect:/ogiri";
+        return "redirect:/top";
     }
 
 
