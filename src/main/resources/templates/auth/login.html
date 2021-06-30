@@ -9,19 +9,19 @@
 </head>
 
 <body>
-<form th:method="post" th:action="@{/ogiri/top}" th:object="${post}" novalidate>
   <h2>管理者ログイン</h2>
   <div th:if="${param.error}">
     <small>管理者名またはパスワードが正しくありません</small>
   </div>
+
   <form th:action="@{/login}" th:method="post" novalidate>
     <div>
-      <label for="admin">管理者名：</label>
-      <input type="text" name="admin">
+      <label for="username">管理者名：</label>
+      <input type="text" name="username" id="username">
     </div>
     <div>
-      <label for="admin">パスワード：</label>
-      <input type="password" name="password">
+      <label for="password">パスワード：</label>
+      <input type="password" name="password" id="password">
     </div>
     <button>ログイン</button>
   </form>
