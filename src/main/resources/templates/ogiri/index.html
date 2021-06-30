@@ -7,17 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理する</title>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 <body>
-    <h1>投稿者の確認</h1>
-    <div class="container">
+    <h1>題名を押すと評価できるよ</h1>
+    <div class="container" >
         <table class="table table-striped">
             
             <thead class="thead-dark">
             <tr>
-                <th>ID</th>
+               
                 <th>ニックネーム</th>
                 <th>投稿日</th>
                 <th>アップロード画像</th>
@@ -27,7 +28,7 @@
 
             <tbody> 
                 <tr th:each="post : ${posts}" th:object="${post}" enctype="multipart/form-data" th:action="@{/ogiri/{id}(id=${post.id})}">
-                    <td th:text="*{id}"></td>
+                   
                     <td th:text="*{nickname}"></td>
                     <td th:text="*{date}"></td>
                     <td>

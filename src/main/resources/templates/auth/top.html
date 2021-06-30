@@ -6,16 +6,18 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+  <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
+  <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
   <title>管理者専用</title>
 </head>
-<body>
-<h1>投稿者の確認</h1>
 
-<h1>認証しないと表示されないページです</h1>
+<body>
+  <h1>投稿者の確認</h1>
+
+  <h1>認証しないと表示されないページです</h1>
   <div sec:authentication="principal">
-  
+
   </div>
   <!-- ユーザIDとEMail -->
   <div sec:authorize="isAuthenticated()">
@@ -24,54 +26,55 @@
   </div>
   <br>
   <div sec:authorize="hasRole('ADMIN')">
-   
+
   </div>
   </div>
 
-    <div class="container">
-        <table class="table table-striped">
-            
-            <thead class="thead-dark">
-                <th>ID</th>
-                <th>ニックネーム</th>
-                <th>投稿日</th>
-                <th>アップロード画像</th>
-                <th>題名</th>
-                 
-            </thead>
-            <tbody>
-<tr th:each="post : ${post}" th:object="${post}" enctype="multipart/form-data" th:action="@{/ogiri/{id}/top(id=${post.id})}">
-                    <td th:text="*{id}"></td>
-                    <td th:text="*{nickname}"></td>
-                    <td th:text="*{date}"></td>
-                    <td>
-                        <img th:src="*{image}" alt="image">
-                    </td>
-                    <td>
-                    <a th:href="@{/ogiri/{id}/eval(id=*{id})}" th:text="*{title}"></a>
-                    </td>
-                    <td>
-                    <a th:href="@{/ogiri/{id}/result(id=*{id})}" class="btn btn-info">感想</a>
-                    </td>
-                    <td>
-                        <form th:action="@{/ogiri/{id}/delete(id=*{id})}" th:method="delete">
-                            <button type="submit" onclick="return confirm('本当に消しますか?');"
-                                class="btn btn-danger"><i class="fas fa-trash"></i>Destroy</button>
-                        </form>
-                        </td>
-</tr>
+  <div class="container">
+    <table class="table table-striped">
+
+      <thead class="thead-dark">
+        <th>ID</th>
+        <th>ニックネーム</th>
+        <th>投稿日</th>
+        <th>アップロード画像</th>
+        <th>題名</th>
+
+      </thead>
+      <tbody>
+        <tr th:each="post : ${post}" th:object="${post}" enctype="multipart/form-data"
+          th:action="@{/ogiri/{id}/top(id=${post.id})}">
+          <td th:text="*{id}"></td>
+          <td th:text="*{nickname}"></td>
+          <td th:text="*{date}"></td>
+          <td>
+            <img th:src="*{imageSource}" alt="image">
+          </td>
+          <td>
+            <a th:href="@{/ogiri/{id}/eval(id=*{id})}" th:text="*{title}"></a>
+          </td>
+          <td>
+            <a th:href="@{/ogiri/{id}/result(id=*{id})}" class="btn btn-info">感想</a>
+          </td>
+          <td>
+            <form th:action="@{/ogiri/{id}/delete(id=*{id})}" th:method="delete">
+              <button type="submit" onclick="return confirm('本当に消しますか?');" class="btn btn-danger"><i
+                  class="fas fa-trash"></i>Destroy</button>
+            </form>
+          </td>
+        </tr>
 
 
 
-<div class="outer">
-    <div class="inner">
-        <div class="heading">ログイン成功</div>
-        <div class="login-message" sec:authorize="hasRole('ADMIN')">管理者でログインしています。</div>
-         <form th:method="post" th:action="@{/logout}">
-            <a th:href="@{/ogiri}">ログアウト</a>
-        </form>
-    </div>
-</div>
-</tbody>
-</table>
+        <div class="outer">
+          <div class="inner">
+            <div class="heading">ログイン成功</div>
+            <div class="login-message" sec:authorize="hasRole('ADMIN')">管理者でログインしています。</div>
+            <form th:method="post" th:action="@{/logout}">
+              <a th:href="@{/ogiri}">ログアウト</a>
+            </form>
+          </div>
+        </div>
+      </tbody>
+    </table>
 </body>

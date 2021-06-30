@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="main">
-
+<link rel="stylesheet" th:href="@{/css/eval.css}" type="text/css">
     <body>
         <div class="p-3 mb-2 bg-warning text-dark"></div>
         <h1>評価</h1>
@@ -15,7 +15,7 @@
                 </td>
             </ul>
         </div>
-        <div>
+        <div class="title">
 
 
             <ul th:object="${post}">

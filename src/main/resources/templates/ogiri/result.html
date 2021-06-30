@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="main">
+<link rel="stylesheet" th:href="@{/css/result.css}" type="text/css">
 <body>
 <h1 >感想</h1>
     <ul th:each="r : ${result}">
