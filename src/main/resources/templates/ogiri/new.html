@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <h1>投稿内容の確認</h1>
+        <h1 class="shadow">投稿内容の確認</h1>
         <form th:method="post " enctype="multipart/form-data" th:action="@{/ogiri}" th:object="${post}" novalidate>
             <div class="container">
                 <div class="form-group row">
@@ -34,7 +34,8 @@
                     <label for="file">アップロード画像: </label><br>
                     <input type="file" name="file">
                 </div>
-                <h5>※ファイル形式がJPEGじゃないと表示されません。このページの一番下のリンクをクリックして下さい。</h5>
+                <h6>※ファイルを選択しないと投稿できません</h6>
+                
 
                 <div class="form-group row">
                     <label for="title">題名: </label><br>
@@ -45,9 +46,7 @@
                 <button type="submit" onclick="return confirm('本当に投稿する？？？');" class="btn btn-danger"><i
                         class="fas fa-trash"></i>投稿ボタン</button>
 
-                <div>
-                    <a href="https://www.bannerkoubou.com/">こちらからアップロードする画像をJPEGに変換してください。</a>
-                </div>
+                
         </form>
 
     </body>

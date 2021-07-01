@@ -4,11 +4,11 @@
 <link rel="stylesheet" th:href="@{/css/eval.css}" type="text/css">
     <body>
         <div class="p-3 mb-2 bg-warning text-dark"></div>
-        <h1>評価</h1>
+        <h1 class="shadow">評価</h1>
 
 
-        <div>
-            <label for="file">画像: </label><br>
+        <div class="class1">
+            <label for="file">画像 </label><br>
             <ul th:object="${post}" enctype="multipart/form-data" th:action="@{/ogiri/{id}/eval(id=${post.id})}">
                 <td>
                     <img th:src="*{imageSource}" alt="image">

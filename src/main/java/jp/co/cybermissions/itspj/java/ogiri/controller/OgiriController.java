@@ -1,20 +1,16 @@
 package jp.co.cybermissions.itspj.java.ogiri.controller;
 
-import java.io.File;
+
 import java.io.IOException;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import org.springframework.data.jpa.domain.JpaSort.Path;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,14 +19,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import jp.co.cybermissions.itspj.java.ogiri.model.Admin;
 import jp.co.cybermissions.itspj.java.ogiri.model.Eval;
 import jp.co.cybermissions.itspj.java.ogiri.model.EvalRepository;
-import jp.co.cybermissions.itspj.java.ogiri.model.Login;
 import jp.co.cybermissions.itspj.java.ogiri.model.Post;
 import jp.co.cybermissions.itspj.java.ogiri.model.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -50,8 +43,12 @@ public class OgiriController {
 
     
    @PostMapping("")
-  public String save(@RequestParam("file") MultipartFile file, @Validated @ModelAttribute Post post,
+  public String save(HttpServletResponse response,@RequestParam("file") MultipartFile file, @Validated @ModelAttribute Post post,
       BindingResult result) {
+        if (file.isEmpty()) {
+            post.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return "ogiri/new";
+          }
     if (result.hasErrors()) {
       return "ogiri/new";
     }
@@ -66,8 +63,7 @@ public class OgiriController {
     pRep.save(post);
     return "redirect:/ogiri";
   }
-    // pRep.save(post);
-    // return "redirect:/ogiri";
+    
 
     @GetMapping("")
     public String index(Model model) {

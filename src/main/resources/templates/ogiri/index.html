@@ -12,7 +12,22 @@
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </head>
 <body>
-    <h1>題名を押すと評価できるよ</h1>
+
+    <h1 class="title">
+     <span>題</span>
+  <span>名</span>
+  <span>を</span>
+  <span>押</span>
+  <span>す</span>
+  <span>と</span>
+  <span>評</span>
+  <span>価</span>
+  <span>で</span>
+  <span>き</span>
+  <span>る</span>
+  <span>よ</span>
+  <span>!</span>
+  <span>!</span></h1>
     <div class="container" >
         <table class="table table-striped">
             
@@ -23,7 +38,8 @@
                 <th>投稿日</th>
                 <th>アップロード画像</th>
                 <th>題名</th>
-            </tr>    
+            </tr>   <a th:href="@{ogiri/new}">新規投稿する方はこちらから</a><br>
+                    <a th:href="@{/login}">管理者の方はこちらから</a> 
             </thead>
 
             <tbody> 
@@ -42,8 +58,7 @@
                     </td>
                  
                 </tr>     
-                    <a th:href="@{ogiri/new}">新規投稿する方はこちらから</a><br>
-                    <a th:href="@{/login}">管理者の方はこちらから</a>
+                    
                     
                 
             </tbody>

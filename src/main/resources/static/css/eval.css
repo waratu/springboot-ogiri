@@ -1,17 +1,30 @@
 
  img {
     object-fit: cover;
-    width: 400px;
-    height: 300px;
+   
+    text-align: center;
   }
 
   .title{
     text-align: center;
-    width: 450px;
-    height: 150px;
+   
   }
 
  body {
     background: radial-gradient( #eeb9bc,#ee67ab);
     font-weight: 900;
   }
+
+  .shadow {
+    text-shadow: 2px 2px 2px silver;
+   }
+
+   h1{
+    font-style: italic;
+      background-color: rgb(252, 198, 23);
+      text-align: center;
+   }
+   
+   .class1{
+     text-align: center;
+   }

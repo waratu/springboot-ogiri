@@ -1,31 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <div th:fragment="main">
-<link rel="stylesheet" th:href="@{/css/result.css}" type="text/css">
-<body>
-<h1 >感想</h1>
-    <ul th:each="r : ${result}">
-    <li class="list-group-item list-group-item-info">
-       [[${r.key}]] -- [[${r.value}]]
-    </li>
-    </ul>
+   <link rel="stylesheet" th:href="@{/css/result.css}" type="text/css">
 
-    <h3>コメント</h3>
-    <ul th:each="eval : ${post.eval}">
-     <label th:text="${comment}">みんなからのコメント</label>
-       [[${eval.comment}]]
-    </ul>
-   <form th:method="post "  th:action="@{/ogiri}" th:object="${post}">
-    
-   <p>
-    <span th:text="${comment}">コメントの値</span>以上が皆様評価です。
-   </p>
-    
-    <a th:href="@{/ogiri}">Back</a>
-    <a th:href="@{/ogiri/{id}(id=*{id})}" ></a>
+   <body>
+      <div class="holder">
+         <div class="first"></div>
+         <div class="second"></div>
+         <div class="third"></div>
 
-</div>
-</body>
-</form>
+         <div class="text">
+            <h1 class="shadow">感想</h1>
+            <h3>評価の合計</h3>
+            <ul th:each="r : ${result}">
+               
+                  [[${r.key}]] -- [[${r.value}]]
+              
+            </ul>
+
+            <h3>コメント</h3>
+            <ul th:each="eval : ${post.eval}">
+               <label th:text="${comment}">みんなからのコメント</label>
+               [[${eval.comment}]]
+            </ul>
+            <form th:method="post " th:action="@{/ogiri}" th:object="${post}">
+
+               <p>
+                  <span th:text="${comment}">コメントの値</span>以上が皆様評価です。
+               </p>
+
+               <a th:href="@{/ogiri}">Back</a>
+               <a th:href="@{/ogiri/{id}(id=*{id})}"></a>
+
+         </div>
+      </div>
+   </body>
+   </form>
+
 </html>
-    

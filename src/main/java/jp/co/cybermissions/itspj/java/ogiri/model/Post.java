@@ -70,4 +70,8 @@ public class Post {
     }
     return sb.toString();
   }
+
+
+      public void setStatus(int scBadRequest) {
+      }
 }
