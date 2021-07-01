@@ -16,7 +16,7 @@
 
     <body>
         <h1 class="shadow">投稿内容の確認</h1>
-        <form th:method="post " enctype="multipart/form-data" th:action="@{/ogiri}" th:object="${post}" novalidate>
+        <form th:method="post " enctype="multipart/form-data" th:action="@{/ogiri}" th:object="${postForm}" novalidate>
             <div class="container">
                 <div class="form-group row">
                     <label for="name" class="col-2">ニックネーム：</label><br>
@@ -30,11 +30,12 @@
                     <div th:errors="*{date}" class="invakud-feedback"></div>
                 </div>
 
-                <div>
+                <div class="form-group row">
                     <label for="file">アップロード画像: </label><br>
                     <input type="file" name="file">
+                    <div th:errors="*{file}" class="invakud-feedback">
                 </div>
-                <h6>※ファイルを選択しないと投稿できません</h6>
+                
                 
 
                 <div class="form-group row">

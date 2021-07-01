@@ -8,7 +8,7 @@
 
 
         <div class="class1">
-            <label for="file">画像 </label><br>
+            <label for="file"></label><br>
             <ul th:object="${post}" enctype="multipart/form-data" th:action="@{/ogiri/{id}/eval(id=${post.id})}">
                 <td>
                     <img th:src="*{imageSource}" alt="image">
@@ -17,10 +17,11 @@
         </div>
         <div class="title">
 
-
+         <div class="a">
             <ul th:object="${post}">
                 <label>題名: [[*{title}]]</label>
             </ul>
+         </div>
 
         </div>
         <form th:method="post" th:action="@{/ogiri/{id}/eval(id=${post.id})}" th:object="${eval}" novalidate>
@@ -36,12 +37,12 @@
                     <input type="radio" name="radio" th:value="つまらない">つまらない
                 </label></div>
 
-
+            <div class="i">
 
             ご感想：<br>
             <textarea name="comment" rsprinows="4" cols="40"></textarea><br>
             <input type="submit" value="送信"><input type="reset" value="リセット">
-
+            </div>
         </form>
         </ul>
 </div>
