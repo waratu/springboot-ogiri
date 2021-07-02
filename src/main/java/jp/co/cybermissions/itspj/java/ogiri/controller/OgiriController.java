@@ -42,7 +42,7 @@ public class OgiriController<UploadForm> {
     private final EvalRepository eRep;
     private final PostFormValidator postFormValidator;
 
-    @InitBinder
+    @InitBinder("postForm")
     public void InitBinder(WebDataBinder binder){
       binder.addValidators(postFormValidator);
     }

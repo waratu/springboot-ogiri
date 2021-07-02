@@ -10,9 +10,40 @@
     <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-</head>
+     <style>
+      @keyframes fadeIn {
+        to { opacity: 1; }
+      }
+      .c1, .c2, .c3, .c4, .c5, .c6 {
+        opacity: 0;
+        animation: 2.0s linear forwards fadeIn;
+      }
+      .c1 { animation-delay: 0.0s; }
+      .c2 { animation-delay: 0.5s; }
+      .c3 { animation-delay: 1.0s; }
+      .c4 { animation-delay: 1.5s; }
+      .c5 { animation-delay: 2.0s; }
+      .c6 { animation-delay: 2.5s; }
+    </style>
+</head> 
 <body>
-    <h1 class="shadow">題名を押すと評価できるよ</h1>
+    
+    <h1 class="slidebox">
+      <p class="toptext">
+        <span class="c1">題</span>
+        <span class="c2">名</span>
+        <span class="c3">を</span>
+        <span class="c4">押</span>
+        <span class="c5">す</span>
+        <span class="c6">と</span>
+        <span class="c6">評</span>
+        <span class="c6">価</span>
+        <span class="c6">で</span>
+        <span class="c6">き</span>
+        <span class="c6">る</span>
+        <span class="c6">よ</span>
+        <span class="c6">！</span>
+      </p></h1>
     <div class="container" >
         <table class="table table-striped">
             
@@ -23,8 +54,12 @@
                 <th>投稿日</th>
                 <th>アップロード画像</th>
                 <th>題名</th>
-            </tr>   <a th:href="@{ogiri/new}">新規投稿する方はこちらから</a><br>
-                    <a th:href="@{/login}">管理者の方はこちらから</a> 
+            </tr>   
+            <div class="i">
+            <a th:href="@{ogiri/new}">新規投稿する方はこちらから</a></div>
+            <div class="u">
+            <a th:href="@{/login}">管理者の方はこちらから</a> </div>
+            
             </thead>
 
             <tbody> 
@@ -49,4 +84,4 @@
             </tbody>
         </table>
         
-</body>
+</body> 

@@ -10,7 +10,23 @@ body{
     font-style: italic;
       background-color: rgb(252, 198, 23);
       text-align: center;
+      
    }
+   h3{
+    position: relative;
+    padding: 0.6em;
+    background: #e0edff;
+    color:#444;
+   }
+
+   .sa{
+font-size:25px;
+   }
+
+   p{
+font-size:25px;
+   }
+
    
     @import url(https://fonts.googleapis.com/css?family=Bitter);
     body {

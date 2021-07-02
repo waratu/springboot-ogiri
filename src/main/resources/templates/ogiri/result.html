@@ -10,9 +10,9 @@
          <div class="third"></div>
 
          <div class="text">
-            <h1 class="shadow">感想</h1>
+            <h1 class="shadow">みんなの感想</h1>
             <h3>評価の合計</h3>
-            <ul th:each="r : ${result}">
+            <ul th:each="r : ${result}" class="sa">
                
                   [[${r.key}]] -- [[${r.value}]]
               
@@ -31,10 +31,10 @@
 
                <a th:href="@{/ogiri}">Back</a>
                <a th:href="@{/ogiri/{id}(id=*{id})}"></a>
-
+</form>
          </div>
       </div>
    </body>
-   </form>
+   
 
 </html>
