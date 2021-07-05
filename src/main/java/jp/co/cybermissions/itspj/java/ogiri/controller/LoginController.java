@@ -1,5 +1,7 @@
 package jp.co.cybermissions.itspj.java.ogiri.controller;
 
+
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -36,7 +38,7 @@ public class LoginController {
     
     @GetMapping("/top")
     public String success(ModelMap modelMap,Model model) {
-        model.addAttribute("post", pRep.findAll());
+        model.addAttribute("post", pRep.findAll(Sort.by(Sort.Direction.DESC,"id")));
         return "auth/top";
     }
 

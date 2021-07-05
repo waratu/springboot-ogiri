@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Base64;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -50,7 +51,7 @@ public class Post {
     private String title;
     
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",cascade = {CascadeType.ALL})
     private List<Eval> eval;
 
 
